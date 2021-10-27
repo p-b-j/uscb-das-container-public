@@ -1,6 +1,6 @@
 # Census DAS Container Execution
 ## Overview
-The goal of this repo is to provide a means of running the Census' DAS project in a Singularity container.
+The goal of this repo is to provide a means of running the Census Bureau's Disclosure Avoidance System (DAS) project in a Singularity container.
 
 ## Setup
 ### Gurobi License
