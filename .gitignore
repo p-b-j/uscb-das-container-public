@@ -1,0 +1,6 @@
+singularity_tmp
+census_das.img
+spark_logs
+spark_work
+coord_hostname.txt
+das_home.conf
