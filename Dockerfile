@@ -13,7 +13,8 @@ RUN tar xfz gurobi9.1.1_linux64.tar.gz
 # Hash specific to a particular user's license
 # If you are running the script for the first time, you will have to update
 # with a hash for your own license. Free academic licenses should be available at gurobi.com
-RUN /usr/local/gurobi911/linux64/bin/grbgetkey --path ~ 12f740fc-588c-11eb-be23-020d093b5256
+ARG GUROBIHASH
+RUN /usr/local/gurobi911/linux64/bin/grbgetkey --path ~ $GUROBIHASH
 
 # copy in directories
 COPY 2018_das_release/etc ~/das_centennial/etc
