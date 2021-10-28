@@ -6,13 +6,13 @@
 #
 
 # Install necessary packages
-sudo yum install -y git emacs tmux isomd5sum || exit 1
-sudo yum update -y || exit 1
-sudo yum upgrade -y || exit 1
+sudo yum install -y git emacs tmux isomd5sum && yum -y clean all || exit 1
+sudo yum update -y && yum -y clean all || exit 1
+sudo yum upgrade -y && yum -y clean all || exit 1
 
 # Change Java
-sudo yum install -y java-1.8.0 || exit 1
-sudo yum remove -y java-1.7.0-openjdk || exit 1
+sudo yum install -y java-1.8.0 && yum -y clean all || exit 1
+sudo yum remove -y java-1.7.0-openjdk && yum -y clean all || exit 1
 
 # Configure syslog
 sudo touch /var/log/local1.log
@@ -50,6 +50,10 @@ if [ ! -d $SPARK_TAR ]; then
   tar xfvz $SPARK_TAR
 fi
 
+if [ -f $SPARK_TAR ]; then
+  rm $SPARK_TAR
+fi
+
 # Update the user's profile
 SPARK_ROOT=$SPARK_DIR/`basename $SPARK_FILE .tgz`
 if ! grep $SPARK_ROOT $HOME/.bashrc >/dev/null 2>&1 ; then
@@ -70,6 +74,10 @@ if [ ! -r $ANACONDA_SH ]; then
 fi
 if [ ! -e $ANACONDA_ROOT/bin/python3 ]; then
   sh $ANACONDA_SH -f -b -p $ANACONDA_ROOT
+fi
+
+if [ -f $ANACONDA_SH ]; then
+  rm $ANACONDA_SH
 fi
 
 

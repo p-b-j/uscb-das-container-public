@@ -38,4 +38,3 @@ sudo /usr/local/anaconda3/bin/python3 setup.py install || exit 1
 
 sudo yum -y install python-pip texlive || exit 1
 python3 -m pip install pytest pyspark --user || exit 1
-

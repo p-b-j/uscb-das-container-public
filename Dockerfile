@@ -1,10 +1,10 @@
 FROM centos:7
 
 # install yum dependencies
-RUN yum update -y
-RUN yum install -y epel-release passwd initscripts cronie wget bzip2 zip unzip
-RUN yum makecache
-RUN yum update -y
+RUN yum update -y && yum -y clean all
+RUN yum install -y epel-release passwd initscripts cronie wget bzip2 zip unzip && yum -y clean all
+RUN yum makecache && yum -y clean all
+RUN yum update -y && yum -y clean all
 
 # download gurobi and get gurobi license key
 WORKDIR /usr/local

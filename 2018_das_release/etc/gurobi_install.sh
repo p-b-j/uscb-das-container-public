@@ -31,6 +31,7 @@ if [ ! -d $GUROBI_BASE ]; then
     cd `dirname $GUROBI_BASE`
     sudo tar xfz $GUROBI_INSTALLER
     sudo chown -R $USER $GUROBI_BASE
+    sudo rm $GUROBI_INSTALLER
 else
     echo Gurobi already installed
 fi
