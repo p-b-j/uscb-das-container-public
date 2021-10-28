@@ -32,21 +32,29 @@ $ export SINGULARITY_TMPDIR=/path/to/uscb-das-container-public/singularity_tmp
 
 #### **Option 1: Building from a prebuilt Docker Hub image**
 Because the current build process requires Docker, there is a pre-built image on Docker Hub that can be used to build a Singularity container. At the time of writing this, the image worked, but we haven't rigorously tested it so please let us know if anything is amiss. Run the following command, which will take about 15 minutes:
+
 ```bash
 # Make sure we are at the top of the repo
-$ basename $PWD
-uscb-das-container-public
 # Build the Singularity container census_das.img from the Docker Hub image
-$ singularity build census_das.img docker://pbjay/census-das-container:latest
+[[ "$(basename $PWD)" == "uscb-das-container-public" ]] \
+  && singularity \
+       build census_das.img \
+       docker://pbjay/census-das-container:latest
 ```
 
 #### **Option 2: Rebuilding from Docker and Singularity**
 You can also build the Docker image locally and then build the Singularity container from the local image:
 ```bash
 # You may or may not need --network host depending on your docker setup
-$ docker build --network host -t census-das-container:latest .
+[[ "$(basename $PWD)" == "uscb-das-container-public" ]] \
+  && docker build \
+  --build-arg GUROBIHASH=12f740fc-588c-11eb-be23-020d093b5256 \
+  --network host \
+  -t census-das-container:latest \
+  .
 # Build a Singularity image from the local docker image
-$ singularity build census_das.img docker-daemon:census-das-container:latest
+singularity build census_das.img \
+  docker-daemon:census-das-container:latest
 ```
 
 ## Configuration
