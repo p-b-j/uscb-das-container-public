@@ -67,20 +67,6 @@ else
   echo Gurobi already on PATH
 fi
 
-if [ ! -r $GRB_LICENSE_FILE ]; then
-  echo Gurobi license is not found
-  echo For information on obtaining an academic license and installing it on EC2
-  echo Please see the following resources:
-  echo http://www.gurobi.com/academia/academia-center
-  echo https://github.com/snuspl/cruise/wiki/A-guide-to-validate-Gurobi-Academic-License-on-EC2
-  echo https://stackoverflow.com/questions/2241063/bash-script-to-setup-a-temporary-ssh-tunnel
-  echo After obtaining a license, rerun this script
-  exit 1
-else
-  echo Gurobi license found: $GRB_LICENSE_FILE
-fi
-
-
 # todo: clean this up
 ANACONDA_ROOT=/usr/local/anaconda3
 if [ ! -d $ANACONDA_ROOT ]; then
